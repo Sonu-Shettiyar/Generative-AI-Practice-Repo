@@ -1,4 +1,3 @@
-# Zesty Zomato: The Zomato Chronicles
 import json
 
 arr = {"items": [], "orders": [], "totalSales": 0}
@@ -79,7 +78,7 @@ def addOrder():
     
     orderDict = {}
     orderDict["customer"] = cus
-    orderDict["orderId"] = hash(cus)  # Changed 'id(cus)' to 'hash(cus)' for uniqueness
+    orderDict["orderId"] = hash(cus)  
     orderDict["items"] = itemEl
     orderDict["totalPrice"] = totalPrice
     orderDict["status"] = 'received'
@@ -135,7 +134,7 @@ def removeItem():
         print('No Product Found')
 
 
-def updateAvailability(): # This function is used to update the quantity of an item
+def updateAvailability(): 
     _id = int(input('Enter the id of the product whose availability has to be changed: '));
     newQty = int(input('Enter quantity: '));
     for i in range(len(arr["items"])):
@@ -156,11 +155,10 @@ def updateAvailability(): # This function is used to update the quantity of an i
     print('\n+________________________\n');
 
 
-def updateOrder(): # This function is used to update status of an order
+def updateOrder():
     _id = int(input('Enter Order Id: '));
     status = input('Enter status of the order: ');
     for i in range(len(arr['orders'])):
-        # print(arr["orders"][i]);
         if arr["orders"][i]['orderId'] == _id:
             arr["orders"][i]["status"] = status;
             check = updateJsonFile();
@@ -175,10 +173,10 @@ def updateOrder(): # This function is used to update status of an order
             return;
     print('\n+____________________________________________________________\n');
     print('No Product Found');
-    print('\n+________________________________________________+____________\n');
+    print('\n+_________________________________\n');
 
-def displayAllOrders(): # This function is used to display all orders
-    print('\n+________________________________________________________________________\n');
+def displayAllOrders(): 
+    print('\n+____________________________________\n');
     for j in arr['orders']:
         print('\n####################\n');
         for i in j:
@@ -190,7 +188,7 @@ def displayAllOrders(): # This function is used to display all orders
                 continue;
             print(f"{i}: {j[i]}");
         print('\n###################\n');
-    print('\n+______+__________________________________________________________________\n');
+    print('\n+__________________________________________\n');
 
 def main():
     while True:
